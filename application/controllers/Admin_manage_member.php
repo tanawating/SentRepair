@@ -3,27 +3,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin_manage_member extends CI_Controller 
 {
 
-		public function __construct()
-		{
-				parent::__construct();
-	            if(!isset($_SESSION['username']))
-	            {
-	                $this->session->set_flashdata("error","คุณยังไม่ได้เข้าสู่ระบบ !!");
-	                redirect('home/login');
-	            } 
-				$this->load->model('manage_member_model','member_model');
-		}
+        public function __construct()
+        {
+                parent::__construct();
+                if(!isset($_SESSION['username']))
+                {
+                    $this->session->set_flashdata("error","คุณยังไม่ได้เข้าสู่ระบบ !!");
+                    redirect('home/login');
+                } 
+                $this->load->model('manage_member_model','member_model');
+        }
 
-	    public function index($offset = 0) {
-		        $array = $this->member_model->get_all($offset);
-		        $data['query'] = $array['query'];
-		        $data['pagination'] = $array['pagination'];
-		        $data['content'] = 'backend/page_member_view';
-		        $this->load->view('backend/herder');
-		        $this->load->view('backend/menu');
-		        $this->load->view('backend/manage_member_view', $data);
-		        $this->load->view('backend/footer');
-	    }
+        public function index($offset = 0) {
+                $array = $this->member_model->get_all($offset);
+                $data['query'] = $array['query'];
+                $data['pagination'] = $array['pagination'];
+                $data['content'] = 'backend/page_member_view';
+                $this->load->view('backend/herder');
+                $this->load->view('backend/menu');
+                $this->load->view('backend/manage_member_view', $data);
+                $this->load->view('backend/footer');
+        }
         public function add()
         {
                 if($_SERVER['REQUEST_METHOD']=="POST")
@@ -51,11 +51,11 @@ class Admin_manage_member extends CI_Controller
         }
         public function view_edit($s_id)
         { 
-	                $this->rs= $this->member_model->get_one($s_id);
-			        $this->load->view('backend/herder');
-			        $this->load->view('backend/menu');
-	                $this->load->view('backend/manage_member_edit_view',$this);
-	                $this->load->view('backend/footer');
+                $this->rs= $this->member_model->get_one($s_id);
+                $this->load->view('backend/herder');
+                $this->load->view('backend/menu');
+                $this->load->view('backend/manage_member_edit_view',$this);
+                $this->load->view('backend/footer');
         }
         public function edit()
         {

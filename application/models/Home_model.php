@@ -24,10 +24,10 @@ class Home_model extends CI_Model
         }
         public function check_login($txtusername,$txtpassword)
         {
-                $this->db->where('m_username',$txtusername);
-                $this->db->where('m_password',$txtpassword);
-                $query = $this->db->get('tb_member');
-                return $query->row();
+            $this->db->where('m_username',$txtusername);
+            $this->db->where('m_password',$txtpassword);
+            $query = $this->db->get('tb_member');
+            return $query->row();
         }
 
 
