@@ -1,0 +1,10 @@
+
+
+@font-face {
+    font-family: CSChatThai;
+    src: url('../font/CSChatThai.ttf');
+}
+body {
+    font-family: CSChatThai;
+    font-size: 20px;
+}
